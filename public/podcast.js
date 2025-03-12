@@ -1,7 +1,7 @@
 let myLibrary = []
 
 //Podcast constructor
-function Podcast(name, host, episode, category, description, mins_l, mins_t,) {
+function Podcast(name, host, episode, category, description, mins_l, mins_t, image) {
     this.id = crypto.randomUUID()
     this.name = name
     this.host = host
@@ -10,6 +10,7 @@ function Podcast(name, host, episode, category, description, mins_l, mins_t,) {
     this.description = description
     this.mins_l = mins_l
     this.mins_t = mins_t
+    this.image = image
 
 
 };
@@ -26,6 +27,41 @@ function removefromLibrary(id) {
 
 };
 
+//Work on display divs display is targeting correct div
+function displayPodcast(myLibrary) {
+    const display = document.querySelector("#podcast-grid")
+
+
+    for (i = 0; i < myLibrary.length; i++) {
+        const podcastDiv = document.createElement("div")
+        podcastDiv.style.backgroundColor = "white"
+        podcastDiv.style.borderRadius = '20px'
+        podcastDiv.style.height = '400px'
+        podcastDiv.style.width = '300px'
+        podcastDiv.classList.add("podcast")
+
+        podcastDiv.innerHTML = `
+        
+        <h2 class='text-xl font-bold text-center '>${myLibrary[i].name}</h2>
+        <p text-center>${myLibrary[i].image}</p>
+        `
+
+
+
+
+
+
+        display.appendChild(podcastDiv)
+
+
+
+
+
+    }
+
+
+}
+
 //Always remember the 'new' operator
 const pod1 = new Podcast(
     "Hubberman Lab",
@@ -34,7 +70,8 @@ const pod1 = new Podcast(
     "Health",
     "The Huberman Lab Podcast,  hosted by Dr. Andrew Huberman, delves into neuroscience, exploring how brain-body connections influence perceptions, behaviors, and health, while providing science-based tools for optimizing mental and physical well-being",
     0,
-    120
+    120,
+    'none'
 );
 
 const pod2 = new Podcast(
@@ -44,7 +81,8 @@ const pod2 = new Podcast(
     "Tech",
     "Reid Hoffman discusses strategies for successful business pivots with industry leaders, sharing insights on adaptability and innovation.",
     0,
-    45
+    45,
+    'none'
 );
 
 const pod3 = new Podcast(
@@ -54,7 +92,8 @@ const pod3 = new Podcast(
     "Business",
     "The hosts delve into current market trends and political events, offering in-depth analysis and diverse perspectives.",
     0,
-    90
+    90,
+    'none'
 );
 
 const pod4 = new Podcast(
@@ -64,7 +103,8 @@ const pod4 = new Podcast(
     "Tech",
     "An exploration of the rapid advancements in artificial intelligence and their implications for various industries.",
     0,
-    20
+    20,
+    'none'
 );
 
 const pod5 = new Podcast(
@@ -74,7 +114,8 @@ const pod5 = new Podcast(
     "Business",
     "Tim Ferriss and Dr. Peter Attia discuss strategies for enhancing physical and mental performance, longevity, and well-being.",
     0,
-    120
+    120,
+    'none'
 );
 
 
@@ -83,8 +124,24 @@ addTolibrary(pod2);
 addTolibrary(pod3);
 addTolibrary(pod4);
 addTolibrary(pod5);
+addTolibrary(pod4);
+addTolibrary(pod4);
+addTolibrary(pod4);
+addTolibrary(pod4);
+addTolibrary(pod4);
+addTolibrary(pod4);
+addTolibrary(pod4);
+addTolibrary(pod4);
+addTolibrary(pod4);
+addTolibrary(pod4);
+addTolibrary(pod4);
+addTolibrary(pod4);
 
-removefromLibrary("Masters of Scale");
+
+
+
+
+displayPodcast(myLibrary)
 
 
 

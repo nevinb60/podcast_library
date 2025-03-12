@@ -10,58 +10,51 @@
 
 <body class="bg-black">
 
-    <div class="flex h-screen w-screen ">
+    <div class="flex flex-col">
 
-        <div class="display h-full w-screen ">
-            <div class=" header flex justify-between p-7 bg-sky-700">
-                <div class="ml-6">
-                    <h1 class="text-3xl font-bold mr-[20px] text-white"> 🎧 Podcast Library</h1>
-                </div>
-                <div>
-                    <label class="text-3xl hover:bg-sky-300 active:bg-sky-800 transition-colors  "
-                        for="Search"><button>🔎</button></label>
-                    <input class="bg-white text-1xl rounded-3xl px-4 py-2" title="search" type="text">
-                </div>
+        <!-- <div class="display h-full w-screen "> -->
+        <div class=" header flex justify-between p-7 ">
+            <div class="ml-6">
+                <h1 class="text-3xl font-bold mr-[20px] text-white "> 🎧 Podcast Library</h1>
             </div>
+            <div>
+                <label class="text-3xl transition-colors  " for="Search"><button>🔎</button></label>
+                <input class="bg-white text-1xl rounded-3xl px-4 py-2" title="search" type="text">
+            </div>
+        </div>
 
+        <button
+            class="add-pod p-[35px] rounded-[50px] bg-sky-700  mt-3 mb-3 font-bold text-xl text-white w-fit ml-auto mr-auto">Add
+            Podcast</button>
 
-            <button class="add-pod p-[25px] rounded-2xl bg-sky-700 ml-[45%] mt-3 mb-3 font-bold text-xl text-white ">Add
-                Podcast</button>
+        <div class="console h-full grid grid-cols-5 ">
 
-            <div class="podcast-grid grid h-full grid-cols-3 grid-rows-3 gap-[20px] p-[50px]">
+            <div id="podcast-grid" class="grid h-full grid-cols-3 grid-rows-3 gap-[20px] p-[50px] col-span-4">
+                <!-- 6 podcast divs make 3x3 -->
 
-                <div>
-                    podcast
-                </div>
-
-                <div>
-                    podcast
-                </div>
-
-                <div>
-                    podcast
-                </div>
-
-                <div>
-                    podcast
-                </div>
-
-                <div>
-                    podcast
-                </div>
-
-                <div>
-                    podcast
-                </div>
 
             </div>
 
 
+            <div class="leaderboard flex flex-col ">
+                <h1 class="text-center text-white text-3xl font-extrabold mb-4"> Your Listening Favorites:</h1>
+                <div class="w-fit bg-amber-50 p-[50px] ml-auto mr-auto">
 
-
+                </div>
+            </div>
 
 
         </div>
+
+
+
+
+
+
+
+
+
+    </div>
 
 
 
