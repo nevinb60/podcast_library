@@ -34,16 +34,23 @@ function displayPodcast(myLibrary) {
 
     for (i = 0; i < myLibrary.length; i++) {
         const podcastDiv = document.createElement("div")
-        podcastDiv.style.backgroundColor = "white"
-        podcastDiv.style.borderRadius = '20px'
-        podcastDiv.style.height = '400px'
-        podcastDiv.style.width = '300px'
+
+        podcastDiv.style.display = 'flex'
+
+
+
         podcastDiv.classList.add("podcast")
 
+
+
         podcastDiv.innerHTML = `
-        
+        <div class='container p-2'>
         <h2 class='text-xl font-bold text-center '>${myLibrary[i].name}</h2>
-        <p text-center>${myLibrary[i].image}</p>
+        <img src="${myLibrary[i].image}" width="280" height="auto" alt="${myLibrary[i].name}">
+
+        </div>
+
+
         `
 
 
@@ -64,14 +71,16 @@ function displayPodcast(myLibrary) {
 
 //Always remember the 'new' operator
 const pod1 = new Podcast(
-    "Hubberman Lab",
-    "Dr. Andrew Hubberman",
+    "Huberman Lab",
+    "Dr. Andrew Huberman",
     "EP # 210 Hunger management",
     "Health",
     "The Huberman Lab Podcast,  hosted by Dr. Andrew Huberman, delves into neuroscience, exploring how brain-body connections influence perceptions, behaviors, and health, while providing science-based tools for optimizing mental and physical well-being",
     0,
     120,
-    'none'
+    'photos/huberman.jpeg'
+
+
 );
 
 const pod2 = new Podcast(
@@ -82,7 +91,7 @@ const pod2 = new Podcast(
     "Reid Hoffman discusses strategies for successful business pivots with industry leaders, sharing insights on adaptability and innovation.",
     0,
     45,
-    'none'
+    'photos/master-scale.png'
 );
 
 const pod3 = new Podcast(
@@ -93,7 +102,7 @@ const pod3 = new Podcast(
     "The hosts delve into current market trends and political events, offering in-depth analysis and diverse perspectives.",
     0,
     90,
-    'none'
+    'photos/all-in.jpeg'
 );
 
 const pod4 = new Podcast(
@@ -104,7 +113,7 @@ const pod4 = new Podcast(
     "An exploration of the rapid advancements in artificial intelligence and their implications for various industries.",
     0,
     20,
-    'none'
+    'photos/thejournal.jpeg'
 );
 
 const pod5 = new Podcast(
@@ -115,7 +124,7 @@ const pod5 = new Podcast(
     "Tim Ferriss and Dr. Peter Attia discuss strategies for enhancing physical and mental performance, longevity, and well-being.",
     0,
     120,
-    'none'
+    'photos/tim-ferris.jpeg'
 );
 
 

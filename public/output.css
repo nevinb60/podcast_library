@@ -1,4 +1,4 @@
-/*! tailwindcss v4.0.13 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.0.14 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -17,7 +17,6 @@
     --text-3xl--line-height: calc(2.25 / 1.875);
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
-    --font-weight-black: 900;
     --radius-3xl: 1.5rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -180,6 +179,24 @@
   .col-span-4 {
     grid-column: span 4 / span 4;
   }
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
@@ -209,9 +226,6 @@
   }
   .h-full {
     height: 100%;
-  }
-  .h-screen {
-    height: 100vh;
   }
   .w-fit {
     width: fit-content;
@@ -243,14 +257,6 @@
   .rounded-\[50px\] {
     border-radius: 50px;
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
-  .border-2 {
-    border-style: var(--tw-border-style);
-    border-width: 2px;
-  }
   .bg-amber-50 {
     background-color: var(--color-amber-50);
   }
@@ -262,6 +268,9 @@
   }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
   }
   .p-7 {
     padding: calc(var(--spacing) * 7);
@@ -289,10 +298,6 @@
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
   }
-  .font-black {
-    --tw-font-weight: var(--font-weight-black);
-    font-weight: var(--font-weight-black);
-  }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
@@ -313,10 +318,24 @@
 button {
   cursor: pointer;
 }
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
+#add-pod:hover {
+  transform: translateY(-2px);
+  outline: 3px solid #74d4ff;
+  background-color: #0084d1;
+  outline-offset: 4px;
+}
+.podcast {
+  background-color: rgb(255, 255, 255);
+  height: 400px;
+  border-radius: 20px;
+  width: 300px;
+}
+.podcast:hover {
+  cursor: pointer;
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  outline: 3px solid rgba(255, 255, 255, 0.387);
+  outline-offset: 4px;
 }
 @property --tw-font-weight {
   syntax: "*";
