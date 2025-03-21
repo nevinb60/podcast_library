@@ -1,4 +1,4 @@
-/*! tailwindcss v4.0.14 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.0.15 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -6,17 +6,18 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-amber-50: oklch(0.987 0.022 95.277);
+    --color-sky-500: oklch(0.685 0.169 237.323);
     --color-sky-700: oklch(0.5 0.134 242.749);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --font-weight-bold: 700;
-    --font-weight-extrabold: 800;
     --radius-3xl: 1.5rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -197,17 +198,14 @@
       max-width: 96rem;
     }
   }
-  .mt-3 {
-    margin-top: calc(var(--spacing) * 3);
-  }
   .mr-\[20px\] {
     margin-right: 20px;
   }
   .mr-auto {
     margin-right: auto;
   }
-  .mb-3 {
-    margin-bottom: calc(var(--spacing) * 3);
+  .mb-1 {
+    margin-bottom: calc(var(--spacing) * 1);
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
@@ -230,14 +228,14 @@
   .w-fit {
     width: fit-content;
   }
+  .w-full {
+    width: 100%;
+  }
   .w-screen {
     width: 100vw;
   }
   .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .grid-cols-5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
   .grid-rows-3 {
     grid-template-rows: repeat(3, minmax(0, 1fr));
@@ -248,6 +246,9 @@
   .justify-between {
     justify-content: space-between;
   }
+  .gap-1\.5 {
+    gap: calc(var(--spacing) * 1.5);
+  }
   .gap-\[20px\] {
     gap: 20px;
   }
@@ -257,11 +258,11 @@
   .rounded-\[50px\] {
     border-radius: 50px;
   }
-  .bg-amber-50 {
-    background-color: var(--color-amber-50);
-  }
   .bg-black {
     background-color: var(--color-black);
+  }
+  .bg-sky-500 {
+    background-color: var(--color-sky-500);
   }
   .bg-sky-700 {
     background-color: var(--color-sky-700);
@@ -278,8 +279,8 @@
   .p-\[35px\] {
     padding: 35px;
   }
-  .p-\[50px\] {
-    padding: 50px;
+  .p-\[100px\] {
+    padding: 100px;
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
@@ -294,6 +295,10 @@
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
   .text-xl {
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
@@ -301,10 +306,6 @@
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
-  }
-  .font-extrabold {
-    --tw-font-weight: var(--font-weight-extrabold);
-    font-weight: var(--font-weight-extrabold);
   }
   .text-white {
     color: var(--color-white);
@@ -324,9 +325,33 @@ button {
   background-color: #0084d1;
   outline-offset: 4px;
 }
+#add-pod:active {
+  background-color: #0067a3;
+  outline: none;
+}
+dialog {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+form {
+  background-color: white;
+  height: 65vh;
+  width: 65vh;
+  margin-top: 100px;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  border-radius: 30px;
+}
+input {
+  border: solid 2px black;
+  border-radius: 10px;
+}
 .podcast {
   background-color: rgb(255, 255, 255);
-  height: 400px;
+  height: 370px;
   border-radius: 20px;
   width: 300px;
 }
@@ -336,6 +361,20 @@ button {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   outline: 3px solid rgba(255, 255, 255, 0.387);
   outline-offset: 4px;
+}
+.progress-bar {
+  background-color: black;
+  height: .5rem;
+  width: 275px;
+  border-radius: 10px;
+  position: relative;
+}
+.progress {
+  background-color: #74d4ff;
+  height: .5rem;
+  width: 100px;
+  position: absolute;
+  border-radius: 10px 0 0 10px;
 }
 @property --tw-font-weight {
   syntax: "*";

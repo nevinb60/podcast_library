@@ -1,4 +1,6 @@
 let myLibrary = []
+const addPod = document.getElementById('add-pod')
+const dialog = document.querySelector("dialog");
 
 //Podcast constructor
 function Podcast(name, host, episode, category, description, mins_l, mins_t, image) {
@@ -15,9 +17,11 @@ function Podcast(name, host, episode, category, description, mins_l, mins_t, ima
 
 };
 
+
 function addTolibrary(podcast) {
     myLibrary.push(podcast);
 };
+
 
 //Removing podcast by name need to switch to id. (create an data-id attribute https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems/Use_data_attributes )
 function removefromLibrary(id) {
@@ -27,47 +31,52 @@ function removefromLibrary(id) {
 
 };
 
-//Work on display divs display is targeting correct div
+
+
+
 function displayPodcast(myLibrary) {
     const display = document.querySelector("#podcast-grid")
 
 
     for (i = 0; i < myLibrary.length; i++) {
         const podcastDiv = document.createElement("div")
-
-        podcastDiv.style.display = 'flex'
-
-
+        const progressBar = document.createElement("div")
 
         podcastDiv.classList.add("podcast")
+        progressBar.classList.add("progress-bar")
 
 
 
         podcastDiv.innerHTML = `
-        <div class='container p-2'>
-        <h2 class='text-xl font-bold text-center '>${myLibrary[i].name}</h2>
-        <img src="${myLibrary[i].image}" width="280" height="auto" alt="${myLibrary[i].name}">
+        <div class='container p-2 flex flex-col '>
+        <h2 class='text-xl font-bold text-center  mb-1'>${myLibrary[i].name}</h2>
+        <img class="mb-4" src="${myLibrary[i].image}" width="280" height="auto" alt="${myLibrary[i].name}
+        ">
+
+          <div class="progress-bar"> 
+          <div class= "progress">
+          </div>
+        </div>
+
+      
 
         </div>
 
 
         `
-
-
-
-
-
-
         display.appendChild(podcastDiv)
-
-
-
-
 
     }
 
 
 }
+
+//Generate form when button is clicked
+
+addPod.addEventListener("click", () => {
+    dialog.showModal();
+})
+
 
 //Always remember the 'new' operator
 const pod1 = new Podcast(
@@ -154,10 +163,10 @@ displayPodcast(myLibrary)
 
 
 
-//Loop through myLibrary to test imput
-for (i = 0; i <= myLibrary.length; i++) {
-    console.log(myLibrary[i])
-};
+// //Loop through myLibrary to test imput
+// for (i = 0; i <= myLibrary.length; i++) {
+//     console.log(myLibrary[i])
+// };
 
 
 
