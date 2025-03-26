@@ -97,15 +97,62 @@ function displayPodcast(myLibrary) {
             const podDialog = document.createElement("dialog")
             const podInfo = document.createElement("div")
 
+
             podInfo.classList.add("podcast-info")
 
-            podDialog.innerHTML = `
+
+            const closeDialog = document.createElement('button');
+            closeDialog.classList.add('close-dialog')
+            closeDialog.addEventListener("click", () => {
+                podDialog.close()
+                podDialog.remove()
+            });
+
+            //WORK: remove podcast/ Formatting info to make it look prettier
+
+            const removePod = document.createElement('button')
+            removePod.classList.add('remove-btn')
+            removePod.addEventListener('click', removefromLibrary())
+
+            removePod.innerHTML = `
             
-            <div class= 'podcast-info'>
-            Name: ${myLibrary.name}
-            </div>
+            <button class = 'remove-btn text-3xl bg-red-500 font-bold text-white'> Remove Podcast </button>
+            `
+
+            closeDialog.innerHTML = `
+
+            <button class = 'close-dialog bg-purple-300 text-2xl'> x </button>
             
             `
+
+
+            podInfo.innerHTML = `
+            
+            <div class = 'info flex flex-col'>
+            <div class= 'podcast-info bg-white text-xl'>
+            Name: ${info.name} 
+            Host: ${info.host}
+            Description: ${info.description}
+             ${info.mins_l} minutes listened out of ${info.mins_t} minutes total
+
+            
+            </div > 
+            
+
+            
+            </div >
+
+            `
+
+
+            podDialog.appendChild(closeDialog)
+            podDialog.appendChild(podInfo)
+            podDialog.appendChild(removePod)
+
+
+            document.body.appendChild(podDialog)
+
+            podDialog.showModal()
 
 
 
