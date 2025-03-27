@@ -99,6 +99,8 @@ function displayPodcast(myLibrary) {
 
 
             podInfo.classList.add("podcast-info")
+            podDialog.classList.add("podcast-dialog")
+
 
 
             const closeDialog = document.createElement('button');
@@ -116,31 +118,32 @@ function displayPodcast(myLibrary) {
 
             removePod.innerHTML = `
             
-            <button class = 'remove-btn text-3xl bg-red-500 font-bold text-white'> Remove Podcast </button>
+            <button class = 'remove-btn text-3xl bg-red-500 font-bold text-white p-2.5 rounded-2xl'> Remove Podcast </button>
             `
 
             closeDialog.innerHTML = `
 
-            <button class = 'close-dialog bg-purple-300 text-2xl'> x </button>
+            <button> x </button>
             
             `
 
 
             podInfo.innerHTML = `
             
-            <div class = 'info flex flex-col'>
-            <div class= 'podcast-info bg-white text-xl'>
-            Name: ${info.name} 
-            Host: ${info.host}
-            Description: ${info.description}
-             ${info.mins_l} minutes listened out of ${info.mins_t} minutes total
+        
+            <h2 class='font-bold text-3xl'> ${info.name}</h2>
+            <br>
+            <p> <strong>Host: </strong>${info.host}</p>
+            <br>
+            <p> <strong>Description: </strong> ${info.description}</p>
+            <br>
+            <p><strong>${info.mins_l}</strong> minutes listened out of <strong>${info.mins_t}</strong> minutes total</p>
 
             
-            </div > 
             
 
             
-            </div >
+            
 
             `
 

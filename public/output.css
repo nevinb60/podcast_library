@@ -9,7 +9,6 @@
     --color-red-500: oklch(0.637 0.237 25.331);
     --color-sky-500: oklch(0.685 0.169 237.323);
     --color-sky-700: oklch(0.5 0.134 242.749);
-    --color-purple-300: oklch(0.827 0.119 306.383);
     --color-gray-200: oklch(0.928 0.006 264.531);
     --color-gray-300: oklch(0.872 0.01 258.338);
     --color-black: #000;
@@ -19,12 +18,11 @@
     --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
-    --text-2xl: 1.5rem;
-    --text-2xl--line-height: calc(2 / 1.5);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
+    --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -241,9 +239,6 @@
   .w-fit {
     width: fit-content;
   }
-  .w-full {
-    width: 100%;
-  }
   .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -262,6 +257,9 @@
   .gap-\[20px\] {
     gap: 20px;
   }
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
+  }
   .rounded-3xl {
     border-radius: var(--radius-3xl);
   }
@@ -277,9 +275,6 @@
   .bg-gray-300 {
     background-color: var(--color-gray-300);
   }
-  .bg-purple-300 {
-    background-color: var(--color-purple-300);
-  }
   .bg-red-500 {
     background-color: var(--color-red-500);
   }
@@ -294,6 +289,9 @@
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
+  }
+  .p-2\.5 {
+    padding: calc(var(--spacing) * 2.5);
   }
   .p-5 {
     padding: calc(var(--spacing) * 5);
@@ -318,10 +316,6 @@
   }
   .text-center {
     text-align: center;
-  }
-  .text-2xl {
-    font-size: var(--text-2xl);
-    line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
   .text-3xl {
     font-size: var(--text-3xl);
@@ -416,6 +410,37 @@ input {
   width: 100px;
   position: absolute;
   border-radius: 10px 0 0 10px;
+}
+.podcast-info {
+  background-color: white;
+  height: fit-content;
+  width: 65vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  font-size: large;
+}
+.close-dialog {
+  background-color: rgb(161, 164, 165);
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  font-weight: bolder;
+  font-size: x-large;
+  margin-left: 25%;
+  margin-top: 50px;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+.close-dialog:hover {
+  transform: translateY(2px);
+  outline: 3px white solid;
+}
+.podcast-dialog {
+  display: flex;
+  flex-direction: column;
 }
 @property --tw-font-weight {
   syntax: "*";
