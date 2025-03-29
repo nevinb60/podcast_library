@@ -1,4 +1,4 @@
-/*! tailwindcss v4.0.15 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.0.17 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -6,7 +6,6 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-500: oklch(0.637 0.237 25.331);
     --color-sky-500: oklch(0.685 0.169 237.323);
     --color-sky-700: oklch(0.5 0.134 242.749);
     --color-gray-200: oklch(0.928 0.006 264.531);
@@ -22,7 +21,6 @@
     --text-3xl--line-height: calc(2.25 / 1.875);
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
-    --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -257,9 +255,6 @@
   .gap-\[20px\] {
     gap: 20px;
   }
-  .rounded-2xl {
-    border-radius: var(--radius-2xl);
-  }
   .rounded-3xl {
     border-radius: var(--radius-3xl);
   }
@@ -275,9 +270,6 @@
   .bg-gray-300 {
     background-color: var(--color-gray-300);
   }
-  .bg-red-500 {
-    background-color: var(--color-red-500);
-  }
   .bg-sky-500 {
     background-color: var(--color-sky-500);
   }
@@ -289,9 +281,6 @@
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
-  }
-  .p-2\.5 {
-    padding: calc(var(--spacing) * 2.5);
   }
   .p-5 {
     padding: calc(var(--spacing) * 5);
@@ -441,6 +430,23 @@ input {
 .podcast-dialog {
   display: flex;
   flex-direction: column;
+}
+.remove-btn {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(240, 0, 0);
+  font-weight: bolder;
+  padding: 20px;
+  font-size: larger;
+  color: white;
+  border-radius: 10px;
+}
+.remove-btn:hover {
+  transform: translateY(2px);
+}
+.remove-btn:active {
+  background-color: rgb(182, 0, 0);
 }
 @property --tw-font-weight {
   syntax: "*";

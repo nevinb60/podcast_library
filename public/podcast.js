@@ -1,4 +1,99 @@
-let myLibrary = []
+let myLibrary = [new Podcast(
+    "Huberman Lab",
+    "Dr. Andrew Huberman",
+    "EP # 210 Hunger management",
+    "The Huberman Lab Podcast,  hosted by Dr. Andrew Huberman, delves into neuroscience, exploring how brain-body connections influence perceptions, behaviors, and health, while providing science-based tools for optimizing mental and physical well-being",
+    10,
+    120,
+    'photos/huberman.jpeg'
+
+
+),
+new Podcast(
+    "Masters of Scale",
+    "Reid Hoffman",
+    "EP #250: The Art of Pivoting",
+    "Reid Hoffman discusses strategies for successful business pivots with industry leaders, sharing insights on adaptability and innovation.",
+    7,
+    45,
+    'photos/master-scale.png'
+),
+new Podcast(
+    "All-In Podcast",
+    "Jason Calacanis, Chamath Palihapitiya, David Sacks, David Friedberg",
+    "EP #201: Market Trends and Political Insights",
+    "The hosts delve into current market trends and political events, offering in-depth analysis and diverse perspectives.",
+    77,
+    90,
+    'photos/all-in.jpeg'
+),
+new Podcast(
+    "The Journal.",
+    "Ryan Knutson, Kate Linebaugh, Jessica Mendoza",
+    "EP #1401: Inside the AI Revolution",
+    "An exploration of the rapid advancements in artificial intelligence and their implications for various industries.",
+    12,
+    20,
+    'photos/thejournal.jpeg'
+),
+new Podcast(
+    "The Tim Ferriss Show",
+    "Tim Ferriss",
+    "EP #751: Optimizing Performance with Dr. Peter Attia",
+    "Tim Ferriss and Dr. Peter Attia discuss strategies for enhancing physical and mental performance, longevity, and well-being.",
+    0,
+    120,
+    'photos/tim-ferris.jpeg'
+),
+new Podcast(
+    "Huberman Lab",
+    "Dr. Andrew Huberman",
+    "EP # 210 Hunger management",
+    "The Huberman Lab Podcast,  hosted by Dr. Andrew Huberman, delves into neuroscience, exploring how brain-body connections influence perceptions, behaviors, and health, while providing science-based tools for optimizing mental and physical well-being",
+    50,
+    120,
+    'photos/huberman.jpeg'
+
+
+),
+new Podcast(
+    "Masters of Scale",
+    "Reid Hoffman",
+    "EP #250: The Art of Pivoting",
+    "Reid Hoffman discusses strategies for successful business pivots with industry leaders, sharing insights on adaptability and innovation.",
+    45,
+    45,
+    'photos/master-scale.png'
+),
+new Podcast(
+    "All-In Podcast",
+    "Jason Calacanis, Chamath Palihapitiya, David Sacks, David Friedberg",
+    "EP #201: Market Trends and Political Insights",
+    "The hosts delve into current market trends and political events, offering in-depth analysis and diverse perspectives.",
+    75,
+    90,
+    'photos/all-in.jpeg'
+),
+new Podcast(
+    "The Journal.",
+    "Ryan Knutson, Kate Linebaugh, Jessica Mendoza",
+    "EP #1401: Inside the AI Revolution",
+    "An exploration of the rapid advancements in artificial intelligence and their implications for various industries.",
+    7,
+    20,
+    'photos/thejournal.jpeg'
+),
+new Podcast(
+    "The Tim Ferriss Show",
+    "Tim Ferriss",
+    "EP #751: Optimizing Performance with Dr. Peter Attia",
+    "Tim Ferriss and Dr. Peter Attia discuss strategies for enhancing physical and mental performance, longevity, and well-being.",
+    60,
+    120,
+    'photos/tim-ferris.jpeg'
+)
+
+];
 const addPod = document.getElementById('add-pod')
 const dialog = document.querySelector("dialog");
 const closeBtn = document.getElementById('close-btn')
@@ -36,15 +131,10 @@ function Podcast(name, host, episode, description, mins_l, mins_t, image) {
     }
 
 
-
-
-
-
-
 }
 
 function addTolibrary(podcast) {
-    myLibrary.push(podcast);
+    myLibrary.unshift(podcast)
 
 };
 
@@ -52,7 +142,10 @@ function addTolibrary(podcast) {
 //Removing podcast by name need to switch to id. (create an data-id attribute https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems/Use_data_attributes )
 function removefromLibrary(id) {
 
-    myLibrary = myLibrary.filter(podcast => podcast.name !== id)
+    myLibrary = myLibrary.filter(podcast => podcast.id !== id)
+    document.querySelector('#podcast-grid').innerHTML = ''
+    displayPodcast(myLibrary)
+    console.log(id)
 
 
 };
@@ -60,6 +153,7 @@ function removefromLibrary(id) {
 
 function displayPodcast(myLibrary) {
     const display = document.querySelector("#podcast-grid")
+    display.innerHTML = ''
 
 
 
@@ -67,10 +161,12 @@ function displayPodcast(myLibrary) {
         const podcastDiv = document.createElement("div")
         const progressBar = document.createElement("div")
 
-        let info = myLibrary[i]
+        const info = myLibrary[i]
 
         podcastDiv.classList.add("podcast")
-        progressBar.classList.add("progress-bar")
+        const progressRatio = info.mins_t > 0 ? info.mins_l / info.mins_t : 0
+        const progressWidth = progressRatio * 275
+
 
 
 
@@ -81,7 +177,7 @@ function displayPodcast(myLibrary) {
         ">
 
           <div class="progress-bar"> 
-          <div class= "progress">
+          <div class="progress" style="width: ${progressWidth}px;"></div>
           </div>
         </div>
 
@@ -105,27 +201,24 @@ function displayPodcast(myLibrary) {
 
             const closeDialog = document.createElement('button');
             closeDialog.classList.add('close-dialog')
+            closeDialog.textContent = 'x'
             closeDialog.addEventListener("click", () => {
                 podDialog.close()
                 podDialog.remove()
             });
 
-            //WORK: remove podcast/ Formatting info to make it look prettier
-
             const removePod = document.createElement('button')
             removePod.classList.add('remove-btn')
-            removePod.addEventListener('click', removefromLibrary())
+            removePod.textContent = 'Remove podcast'
+            removePod.addEventListener('click', () => {
 
-            removePod.innerHTML = `
-            
-            <button class = 'remove-btn text-3xl bg-red-500 font-bold text-white p-2.5 rounded-2xl'> Remove Podcast </button>
-            `
+                removefromLibrary(info.id)
+                podDialog.close()
+                podDialog.remove()
 
-            closeDialog.innerHTML = `
+                console.log(myLibrary.length)
+            })
 
-            <button> x </button>
-            
-            `
 
 
             podInfo.innerHTML = `
@@ -138,11 +231,6 @@ function displayPodcast(myLibrary) {
             <p> <strong>Description: </strong> ${info.description}</p>
             <br>
             <p><strong>${info.mins_l}</strong> minutes listened out of <strong>${info.mins_t}</strong> minutes total</p>
-
-            
-            
-
-            
             
 
             `
@@ -192,10 +280,8 @@ submitBtn.addEventListener("click", (e) => {
     newPod = new Podcast(podTitle, podHost, podEpisode, podDescr, podListened, podTotal, podImage)
 
     addTolibrary(newPod)
+    document.getElementById('podcast-input').reset()
     dialog.close()
-    for (i = 0; i <= myLibrary.length; i++) {
-        console.log(myLibrary[i])
-    };
     displayPodcast(myLibrary)
 })
 
@@ -209,77 +295,6 @@ closeBtn.addEventListener("click", () => {
 addPod.addEventListener("click", () => {
     dialog.showModal();
 })
-
-
-//Always remember the 'new' operator
-const pod1 = new Podcast(
-    "Huberman Lab",
-    "Dr. Andrew Huberman",
-    "EP # 210 Hunger management",
-    "The Huberman Lab Podcast,  hosted by Dr. Andrew Huberman, delves into neuroscience, exploring how brain-body connections influence perceptions, behaviors, and health, while providing science-based tools for optimizing mental and physical well-being",
-    0,
-    120,
-    'photos/huberman.jpeg'
-
-
-);
-
-const pod2 = new Podcast(
-    "Masters of Scale",
-    "Reid Hoffman",
-    "EP #250: The Art of Pivoting",
-    "Reid Hoffman discusses strategies for successful business pivots with industry leaders, sharing insights on adaptability and innovation.",
-    0,
-    45,
-    'photos/master-scale.png'
-);
-
-const pod3 = new Podcast(
-    "All-In Podcast",
-    "Jason Calacanis, Chamath Palihapitiya, David Sacks, David Friedberg",
-    "EP #201: Market Trends and Political Insights",
-    "The hosts delve into current market trends and political events, offering in-depth analysis and diverse perspectives.",
-    0,
-    90,
-    'photos/all-in.jpeg'
-);
-
-const pod4 = new Podcast(
-    "The Journal.",
-    "Ryan Knutson, Kate Linebaugh, Jessica Mendoza",
-    "EP #1401: Inside the AI Revolution",
-    "An exploration of the rapid advancements in artificial intelligence and their implications for various industries.",
-    0,
-    20,
-    'photos/thejournal.jpeg'
-);
-
-const pod5 = new Podcast(
-    "The Tim Ferriss Show",
-    "Tim Ferriss",
-    "EP #751: Optimizing Performance with Dr. Peter Attia",
-    "Tim Ferriss and Dr. Peter Attia discuss strategies for enhancing physical and mental performance, longevity, and well-being.",
-    0,
-    120,
-    'photos/tim-ferris.jpeg'
-);
-
-
-addTolibrary(pod1);
-addTolibrary(pod2);
-addTolibrary(pod3);
-addTolibrary(pod4);
-addTolibrary(pod5);
-addTolibrary(pod1);
-addTolibrary(pod2);
-addTolibrary(pod3);
-addTolibrary(pod4);
-addTolibrary(pod5);
-
-
-
-
-
 
 displayPodcast(myLibrary);
 
